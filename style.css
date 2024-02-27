@@ -1,0 +1,52 @@
+body {
+  background-color: rgb(250, 196, 204);
+}
+/* logo font */
+.navbar-brand {
+  font-family: Impact, "Haettenschweiler", "Arial Narrow Bold", sans-serif;
+  margin: 3px;
+}
+.navbar-toggler {
+  color: pink;
+}
+.btn-outline-success {
+  color: pink;
+  border: 1px solid pink;
+}
+.btn-outline-success:hover {
+  color: white;
+  background-color: pink;
+  border: 1px solid hotpink;
+}
+.container {
+  background-color: black;
+}
+.dropdown-item:hover {
+  background-color: rgb(250, 211, 217);
+}
+
+/* 시간 및 날씨 */
+.tw-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.today {
+  text-align: center;
+}
+
+.time {
+  /* height: 15px; */
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.date {
+  color: #666;
+}
+
+.weather {
+  font-size: 2rem;
+  font-weight: 600;
+}
