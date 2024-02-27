@@ -1,0 +1,30 @@
+body{
+    background-color: rgb(250, 196, 204);
+}
+/* logo font */
+.navbar-brand{
+    font-family: Impact, 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+    margin: 3px;
+}
+.navbar-toggler{
+    color: pink;
+}
+.btn-outline-success{
+    color: pink;
+    border: 1px solid pink;
+
+}
+.btn-outline-success:hover{
+    color: white;
+    background-color: pink;
+    border: 1px solid hotpink;
+
+}
+.container{
+    margin-top:80px;
+    background-color: white;
+}
+.dropdown-item:hover{
+    background-color: rgb(250, 211, 217);
+
+}
