@@ -2,7 +2,8 @@
 const weather = document.querySelector("#weather span:first-child");
 const city = document.querySelector("#weather span:last-child");
 // apiKey 를 넣는 변수
-const API_KEY = `본인 apiKey 입력`;
+// 본인 apiKey 입력
+const API_KEY = `1ad65336915d1716ae49cc7842fb0791`;
 
 // 전역변수 
 let side_country = "";
