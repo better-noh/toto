@@ -1,13 +1,10 @@
-// 날씨 정보 담을 변수
-const weather = document.querySelector("#weather span:first-child");
-const city = document.querySelector("#weather span:last-child");
 // apiKey 를 넣는 변수
 // 본인 apiKey 입력
 const API_KEY = `1ad65336915d1716ae49cc7842fb0791`;
 
 // 전역변수 
-let side_country = "";
-let side_city = "";
+let nav_country = "";
+let nav_city = "";
 let nav_weather = "";
 let nav_temp = "";
 
@@ -25,20 +22,18 @@ async function onGeoOk(position) {
   console.log("data", data);
 
   // 위치 정보 출력
-  side_country = data.sys.country;
-  side_city = data.name;
-  city.innerHTML = `${side_country} ${side_city}`;
+  nav_country = data.sys.country;
+  nav_city = data.name;
 
   // 날씨 및 섭씨 기온 출력
   nav_weather = data.weather[0].main;
   nav_temp = data.main.temp;
-  weather.innerHTML = `${nav_weather} / ${nav_temp}`;
 
   console.log(url);
 
   // displayCurrentDate 함수 호출
   // 호출 시 nav_weather와 nav_temp를 전달하여 사용
-  displayCurrentDate(nav_weather, nav_temp);
+  displayCurrentDate(nav_weather, nav_temp, nav_country, nav_city);
 }
 
 function onGeoError() {
@@ -67,7 +62,7 @@ function getCurrentDate() {
 }
 
 // HTML 요소에 현재 날짜와 요일을 추가하는 함수
-function displayCurrentDate(weather, temp) {
+function displayCurrentDate(weather, temp, country, city) {
   const [date, time] = getCurrentDate();
   console.log(date, time);
 
@@ -82,7 +77,13 @@ function displayCurrentDate(weather, temp) {
                     <div class="time">${time}</div>
                     <div class="date">${date}</div>
                 </div>
-                <div class="weather">${weather} ${temp}°C</div>
+                <div class="wea-loc">
+                    <div class="weather">${weather} ${temp}°C</div>
+                    <div class="loc">
+                        <i class="fa-solid fa-location-dot"></i>
+                        ${country} ${city}
+                    </div>
+                </div>
             </section>
         </div>`;
 

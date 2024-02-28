@@ -46,7 +46,11 @@ body {
   color: #666;
 }
 
+.wea-loc {
+  text-align: center;
+}
+
 .weather {
-  font-size: 2rem;
+  font-size: 1.25rem;
   font-weight: 600;
 }
