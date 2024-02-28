@@ -1,87 +1,104 @@
+// apiKey 를 넣는 변수
+// 본인 apiKey 입력
 const API_KEY = `e9c783dd8bf47188787fdb34e77b61c7`;
-const lang = 'kr';
-let dataList = [];
-const temp ="";
-// 현재 위치 정보 navigator 호출
 
-navigator.geolocation.getCurrentPosition(
-    (position) => {
-        const lat = position.coords.latitude; // 위도
-        const lon = position.coords.longitude; // 경도
-        console.log(`현재 위도 및 경도: ${lat}, ${lon}`);
+// 전역변수 
+let nav_country = "";
+let nav_city = "";
+let nav_weather = "";
+let nav_temp = "";
 
-        // 위치 정보 수행
-        getWeather(lat, lon);
-    },
-    (error) => {
-        console.error("Error getting location:", error.message);
-    }
-);
+async function onGeoOk(position) {
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+  // url 주소를 넣는 변수
+  const url = new URL(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+  );
 
-// 위도와 경도를 인자로 받아 날씨 정보를 얻는 함수
-//&units=metric : kelvin -> 섭씨 온도
-const getWeather = async (lat, lon) => {
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=${lang}&appid=${API_KEY}&units=metric`;
-    
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        dataList = data;
-        
-        console.log("Response:", response);
-        console.log("Weather Data:", data);
-        console.log("온도", data.main.temp);
-        console.log("최고온도", data.main.temp_max);
-        console.log("최저온도", data.main.temp_min);
-        console.log("시 이름", data.name);
+  // url 호출
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log("data", data);
 
-    } catch (error) {
-        console.error("Error fetching weather data:", error);
-    }
-};
-const getTime = () =>{
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = now.getMonth() + 1; // 월은 0부터 시작하므로 +1 
-    const date = now.getDate();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    
-    const formatTime = `${year}년 ${month}월 ${date}일 ${hours}시 ${minutes}분`;
+  // 위치 정보 출력
+  nav_country = data.sys.country;
+  nav_city = data.name;
 
-    return formatTime;
-} 
-// 브라우저 표시
-const currentTime = getTime();
-console.log(currentTime);// 
+  // 날씨 및 섭씨 기온 출력
+  nav_weather = data.weather[0].main;
+  nav_temp = data.main.temp;
+  // 아이콘 
+  const iconCode = data.weather[0].icon;
+  const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
 
-const timeElement = document.getElementById("date"); // 화면에 표시할 요소의 ID 사용
-timeElement.innerHTML = currentTime;
+  console.log(url);
 
-// icon 띄우기
-/**
- * const weatherIconUrl = `http://openweathermap.org/img/wn/${WeatherResult.weather[0].icon}.png`;
-const weatherDescription = WeatherResult.weather[0].description;
+  // displayCurrentDate 함수 호출
+  // 호출 시 nav_weather와 nav_temp를 전달하여 사용
+  displayCurrentDate(nav_weather, nav_temp, nav_country, nav_city, iconUrl);
+}
 
-const imageElement = document.createElement("img");
-imageElement.src = weatherIconUrl;
-imageElement.alt = weatherDescription;
+function onGeoError() {
+  alert("Cant't find you. No weather for you.");
+}
 
-const seoulIconElement = document.querySelector('.icon');
-seoulIconElement.appendChild(imageElement);
+navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
 
- */
+// 현재 날짜를 가져오는 함수
+function getCurrentDate() {
+  const currentTime = new Date();
+  //   console.log(currentTime);
+  const options = {
+    month: "2-digit",
+    day: "2-digit",
+    weekday: "long",
+    hour: "2-digit",
+    minute: "2-digit",
+  };
 
-// const render=()=>{
-//     getWeatharHTML= dataList.map((item) =>{`
-//     <div class="weather-box">
-//     <div class="weather">${dataList.temp}</div>
-//     <div class="time"></div>
-//     <div class="date"></div>
-//     <div class="icon"></div>
-// </div>`
-//     document.getElementById("weather-box").innerHTML = getWeatherHTML;
-// }
-// )};
+  const dateStr = currentTime.toLocaleDateString("ko-KR", options).slice(0, 11);
+  const timeStr = currentTime.toLocaleDateString("en-US", options).slice(-8);
+  //   console.log("오늘 날짜",dateStr)
+  //   console.log("현재 시간", timeStr);
+  return [dateStr, timeStr];
+}
 
-getWeather();
+// HTML 요소에 현재 날짜와 요일을 추가하는 함수
+function displayCurrentDate(weather, temp, country, city, iconUrl) {
+  const [date, time] = getCurrentDate();
+  console.log(date, time);
+
+  // HTML 요소 선택
+  let todayTimeWeather = document.querySelector(".today-weather");
+  let dateHTML = "";
+
+  // 생성된 HTML을 화면에 추가
+  dateHTML += `<div class="tw-area">
+            <section class="tw-container">
+                <div class="today">
+                    <div class="time">${time}</div>
+                    <div class="date">${date}</div>
+                </div>
+                <div class="wea-loc">
+                <div class="weather">
+                <img src="${iconUrl}" alt="Weather Icon"> ${temp}°C</div>
+                    <div class="loc">
+                        <i class="fa-solid fa-location-dot"></i>
+                        ${country} ${city}
+                    </div>
+                </div>
+            </section>
+        </div>`;
+
+
+
+  // todayTimeWeather 요소에 생성된 HTML 추가
+  todayTimeWeather.innerHTML = dateHTML;
+
+  console.log("Time:", time);
+  console.log("Date:", date);
+  console.log("Weather", weather);
+  console.log("Temperature", temp);
+//   console.log(weather.icon);
+}
