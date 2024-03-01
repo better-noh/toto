@@ -20,10 +20,18 @@ body{
     border: 1px solid hotpink;
 
 }
-.container{
-    background-color: black;
-}
+
 .dropdown-item:hover{
     background-color: rgb(250, 211, 217);
+}
 
+#calendar{
+    height: 900px;
+    width: 1200px;
+    color: darkmagenta;
+    margin: auto;
+}
+
+.container{
+    margin-top: 75px;
 }
