@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>first-page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body id="intro-page">
+    <div class="title-show">
+      <h1 class="title-toto">
+        <div>
+          <span>T</span>
+          <span>O</span>
+          <span>T</span>
+          <span>O</span>
+        </div>
+      </h1>
+    </div>
+    <div class="menu">
+      <li class="fa-solid fa-file-pen" style="--i: 2; --clr: #f2f7b5">
+        <a class="btn-link" href="#"
+          ><button class="btn M" type="button"><span>MEMO</span></button>
+        </a>
+      </li>
+      <li class="fa-solid fa-list" style="--i: 3; --clr: #ffaccc">
+        <a class="btn-link" href="#"
+          ><button class="btn L" type="button"><span>LIST</span></button>
+        </a>
+      </li>
+      <li class="fa-solid fa-calendar" style="--i: 4; --clr: #9effc2">
+        <a class="btn-link" href="#">
+          <button class="btn C" type="button"><span>CAL</span></button>
+        </a>
+      </li>
+      <div class="toggle">
+        <ion-icon name="share-social"></ion-icon>
+        <ion-icon name="close-outline"></ion-icon>
+      </div>
+    </div>
+    <div class="members">
+      Team '8' group project [ 이정은, 노나은, 김민지, 김태영 ]
+    </div>
+
+    <script>
+      let toggle = document.querySelector(".toggle");
+      let menu = document.querySelector(".menu");
+      toggle.onclick = function () {
+        menu.classList.toggle("active");
+      };
+
+      let listBtn = document.querySelector(".L");
+      let memoBtn = document.querySelector(".M");
+      let calendarBtn = document.querySelector(".C");
+      let weatherBtn = document.querySelector(".W");
+
+      memoBtn.addEventListener("click", function () {
+        window.location.href = "../StickyNotes/index2.html";
+      });
+      listBtn.addEventListener("click", function () {
+        window.location.href = "./todolist/index3.html";
+      });
+    </script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
