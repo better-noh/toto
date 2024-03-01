@@ -1,3 +1,5 @@
+// const todo = document.querySelector();
+
 let calendar;
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -8,8 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
         events: [],
 
         dateClick: function (e) {
-            // console.log("click!", e.dateStr)
-            addEventToCalendar({title:"MEMO", start:e.dateStr, color:'#8b008b' });
+            let eventTitle = prompt("Enter event title:");
+            if(eventTitle===null || eventTitle===""){ return }
+            addEventToCalendar({ title:eventTitle, start:e.dateStr, color:'#8b008b' });
             // removeEventFromCalendar(e.dateStr);
         }
 
@@ -26,3 +29,4 @@ function removeEventFromCalendar(id){
     let calendarEvent = calendar.getEventById(id);
     calendarEvent.remove();
 }
+
