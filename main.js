@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
         selectable: true,
         events: [],
 
-        dateClick: function (event) {
-            // console.log("click!", event.dateStr)
-            addEventToCalendar({title:"MEMO",  start:event.dateStr });
-            // removeEventFromCalendar(event.dateStr);
+        dateClick: function (e) {
+            // console.log("click!", e.dateStr)
+            addEventToCalendar({title:"MEMO", start:e.dateStr, color:'#8b008b' });
+            // removeEventFromCalendar(e.dateStr);
         }
 
     });
