@@ -43,6 +43,10 @@ body{
         color: darkmagenta;
         margin: auto;
     }
+    .fc .fc-toolbar-title {
+        font-size: 1.5em;
+        margin: 0px;
+    }
 }
 
 /* 요일 색상 바꾸기 */
