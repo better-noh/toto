@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
         initialView: 'dayGridMonth',
         selectable: true,
         events: [],
-        select: function(info) {
-            selectedDate = info.startStr; // 선택한 날짜 저장
+        dateClick: function(info) {
+            selectedDate = info.dateStr; // 선택한 날짜 저장
             $('#memoModal').modal('toggle'); // 모달 표시
         }
     });
