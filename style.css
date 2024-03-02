@@ -28,10 +28,37 @@ body{
 #calendar{
     height: 900px;
     width: 1200px;
-    color: darkmagenta;
+    color: #00098e;
     margin: auto;
 }
 
 .container{
     margin-top: 75px;
+}
+
+@media (max-width: 600px){
+    #calendar{
+        height: 500px;
+        width: 350px;
+        color: darkmagenta;
+        margin: auto;
+    }
+}
+
+/* 요일 색상 바꾸기 */
+.fc-col-header-cell-cushion {
+    color: #00098e;
+}
+
+/* 일자 색상 바꾸기 */
+.fc-daygrid-day-number{
+    color: #00098e;
+}
+
+/* 버튼 색상 바꾸기 */
+:root {
+    --fc-button-bg-color: darkorchid;
+    --fc-button-border-color: darkorchid;
+    --fc-button-hover-bg-color: darkmagenta;
+    --fc-button-hover-border-color: darkmagenta;
 }
