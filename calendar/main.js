@@ -5,6 +5,13 @@ totoBtn.addEventListener('click', function () {
   window.location.href = "../index.html";
 });
 
+// 사이드바 메모 
+let SideMoveMemo = document.querySelector('.dropdown-item');
+
+SideMoveMemo.addEventListener('click', function(){
+    window.location.href = "../StickyNotes/index2.html";
+});
+
 // apiKey 를 넣는 변수
 const API_KEY = `e9c783dd8bf47188787fdb34e77b61c7`;
 
@@ -141,3 +148,4 @@ document.addEventListener('DOMContentLoaded', function() {
 function addEventToCalendar(event){
     calendar.addEvent(event);
 }
+
