@@ -12,6 +12,9 @@ SideMoveMemo.addEventListener('click', function(){
     window.location.href = "../StickyNotes/index2.html";
 });
 
+// 날씨 정보 담을 변수
+const weather = document.querySelector("#weather span:first-child");
+
 // apiKey 를 넣는 변수
 const API_KEY = `e9c783dd8bf47188787fdb34e77b61c7`;
 
@@ -42,9 +45,12 @@ async function onGeoOk(position) {
   // 날씨 및 섭씨 기온 출력
   nav_weather = data.weather[0].main;
   nav_temp = data.main.temp;
+
   // 아이콘 
   const iconCode = data.weather[0].icon;
   const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
+
+  weather.innerHTML = `<img src="${iconUrl}" alt="Weather Icon">${nav_weather} / ${nav_temp}°C`;
 
   console.log(url);
 
