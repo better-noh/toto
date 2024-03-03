@@ -1,3 +1,10 @@
+// 로고 이미지
+let totoBtn = document.querySelector('.toto_img');
+
+totoBtn.addEventListener('click', function () {
+  window.location.href = "../index.html";
+});
+
 // apiKey 를 넣는 변수
 const API_KEY = `e9c783dd8bf47188787fdb34e77b61c7`;
 

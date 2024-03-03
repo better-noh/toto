@@ -22,6 +22,12 @@ body {
     background-color: rgb(250, 211, 217);
 }
 
+/* 로고 이미지 */
+.toto_img{
+    display: block;
+    width: 60px;
+}
+
   /* 시간 및 날씨 */
 .tw-container {
     display: flex;
