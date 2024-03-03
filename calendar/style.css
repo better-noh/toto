@@ -1,0 +1,98 @@
+body {
+    background-color: rgb(250, 196, 204);
+}
+/* logo font */
+.navbar-brand {
+    font-family: Impact, "Haettenschweiler", "Arial Narrow Bold", sans-serif;
+    margin: 3px;
+}
+.navbar-toggler {
+    color: pink;
+}
+.btn-outline-success {
+    color: pink;
+    border: 1px solid pink;
+}
+.btn-outline-success:hover {
+    color: white;
+    background-color: pink;
+    border: 1px solid hotpink;
+}
+.dropdown-item:hover {
+    background-color: rgb(250, 211, 217);
+}
+
+  /* 시간 및 날씨 */
+.tw-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.today {
+    text-align: center;
+}
+
+.time {
+    /* height: 15px; */
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.date {
+    color: #666;
+}
+
+.wea-loc {
+    text-align: center;
+}
+
+.weather {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+#calendar{
+    height: 900px;
+    width: 1200px;
+    color: #00098e;
+    margin: auto;
+}
+
+.container{
+    margin-top: 110px;
+}
+
+@media (max-width: 600px){
+    #calendar{
+        height: 500px;
+        width: 350px;
+        color: #00098e;
+        margin: auto;
+    }
+    .fc .fc-toolbar-title {
+        font-size: 1.5em;
+        margin: 0px;
+    }
+    .modal-dialog {
+        width: 300px; /* 모달의 너비를 300px로 설정 */
+        margin: auto; /* 모달을 화면 중앙에 위치시킴 */
+    }
+}
+
+/* 요일 색상 바꾸기 */
+.fc-col-header-cell-cushion {
+    color: #00098e;
+}
+
+/* 일자 색상 바꾸기 */
+.fc-daygrid-day-number{
+    color: #00098e;
+}
+
+/* 버튼 색상 바꾸기 */
+:root {
+    --fc-button-bg-color: darkorchid;
+    --fc-button-border-color: darkorchid;
+    --fc-button-hover-bg-color: darkmagenta;
+    --fc-button-hover-border-color: darkmagenta;
+}
