@@ -127,6 +127,6 @@ returnButton.addEventListener('click', function () {
   window.location.href = "../index.html";
 });
 calendarButton.addEventListener('click', function () {
-  window.location.href = "";
+  window.location.href = "../calendar/index.html";
 });
 
